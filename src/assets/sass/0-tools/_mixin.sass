@@ -1,0 +1,15 @@
+//Selecting nth child of any element
+//=child($n) 
+//	&:nth-child(#{$n})
+//		background-color: red
+
+// Elements SASS mixin koji nam mijenja &__ tako da to ne moramo uvjek pisati
+// Mixin se u SASS-u definira pomocu '=',a u SCSS sa @mixin
+=element($element)
+	&__#{$element}
+		@content
+
+// Modifier -- SASS mixin koji nam mijenja &-- tako da to ne moramo uvjek pisati
+=modifier($modifier)
+	&--#{$modifier}
+		@content
