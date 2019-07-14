@@ -1,1 +1,47 @@
-//@media only screen and (max-width: 425px), (max-width: 375px), (max-width: 320px)
+@media only screen and (max-width: 782px), (max-width: 768px)
+
+  .grid__header
+    grid-column: span 2
+    display: flex
+    justify-content: space-between
+
+    +modifier('form')
+      width: 70%
+
+    +modifier('barsbtn')
+      display: block
+
+  .grid__aside
+    position: fixed
+    left: -35%
+    z-index: 1
+    width: 33%
+    height: 100vh
+    box-shadow: 0 8px 3px 3px rgba(0, 0, 0, .3)
+    transition: left 400ms ease-in-out
+
+    &.open
+      left: 0
+
+  .grid__content
+    grid-column: span 2
+
+  //Table style
+  .grid__header--form--search
+    width: 95%
+
+  .grid__content--container--table--thead--tr--th
+    font-size: .6em
+
+  .grid__content--container--table--thead--tr--label::after
+    top: 6px
+
+  .grid__content--container--table--tbody--tr--td
+    padding: 0 0 0 2px
+    font-size: .8em
+
+  .grid__content--container--table--tbody--tr--td:nth-child(3)
+    padding-left: 5px
+
+  .grid__content--container--pagination--controls
+    width: 40%

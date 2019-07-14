@@ -1,0 +1,504 @@
+.grid__content--container
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  width: 100%
+  height: 100%
+
+  +modifier('modal')
+    display: none
+    justify-content: space-around
+    align-items: center
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 2
+    color: $link-color-active
+    background-color: rgba(0, 0, 0, .3)
+
+    &.open
+      display: flex
+
+    +modifier('box')
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      width: 500px
+      height: 350px
+      background-color: #FFFFFF
+
+      +modifier('header')
+        display: flex
+        justify-content: space-between
+        align-items: center
+        height: 60px
+        padding: 10px 20px
+        border-bottom: 1px solid #eee
+        text-transform: uppercase
+        background-color: #F4F4F4
+
+        +modifier('title')
+          font-size: .75em
+
+        +modifier('close')
+          font-size: 1.125em
+          cursor: pointer
+          color: $light-grey
+          transition: color 400ms ease-in-out
+
+          &:hover
+            color: lighten($light-grey, 10%)
+
+      +modifier('content')
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 65%
+        background: url('./assets/images/icons/delete.svg') 50% 25%/20% no-repeat
+
+        +modifier('text')
+          margin-top: 10%
+          font-size: .875em
+
+      +modifier('footer')
+        display: flex
+        justify-content: flex-end
+        height: 50px
+
+        +modifier('btn')
+          margin-left: 10px
+          padding: 5px 10px
+          border: none
+          font-weight: 1em
+          font-weight: 700
+          cursor: pointer
+          background-color: transparent
+          transition: all 400ms ease-in-out
+
+          &:focus
+            outline: none
+
+          &.close
+            color: $search-text
+
+            &:hover
+              color: lighten($search-text, 10%)
+
+          &.delete
+            width: 150px
+            color: #FFFFFF
+            background-color: $btn-red
+
+            &:hover
+              background-color: lighten($btn-red, 20%)
+
+  +modifier('delete')
+    display: flex
+    align-items: center
+    height: 80px
+    padding: 10px 20px
+
+    +modifier('btn')
+      width: 115px
+      height: 40px
+      border-radius: 4px
+      border: none
+      cursor: pointer
+      font-size: .875em
+      font-weight: 700
+      color: $white-color
+      background-color: $btn-red
+      transition: background-color 400ms ease-in-out
+
+      &:disabled
+        cursor: not-allowed
+        background-color: lighten($btn-red, 30%)
+
+      &:focus
+        outline-color: darken($btn-red, 15%)
+
+      &:hover
+        background-color: lighten($btn-red, 20%)
+
+  +modifier('table')
+    width: 100%
+    min-height: calc(100vh - 211px)
+    border-collapse: collapse
+
+    +modifier('colgroup')
+
+      & > #col-1
+        width: 3%
+
+      & > #col-2
+        width: 5%
+
+      & > #col-3, & > #col-4, & > #col-5, & > #col-6, & > #col-7, & > #col-8, & > #col-9
+        width: 12.1%
+
+      & > #col-10
+        width: 7%
+
+    +modifier('thead')
+
+      +modifier('tr')
+        height: 50px
+        max-height: 50px
+        border-top: 1px solid #E1E7E9
+
+        +modifier('th')
+          font-size: .75em
+          text-transform: uppercase
+          text-align: center
+
+          &:nth-child(8)
+            color: $text-green
+
+          +modifier('sorticon')
+            display: inline-block
+            width: 15px
+            height: 15px
+            margin-left: 5px
+            font-family: 'Font Awesome 5 Free'
+            font-size: 1em
+            font-weight: 900
+            font-style: normal
+            cursor: pointer
+            color: $text-green
+            transition: color 400ms ease-in-out
+
+            &:hover
+              color: lighten($text-green, 15%)
+
+            &.desc::after
+              content: '\f078'
+
+            &.asc::after
+              content: '\f077'
+
+        +modifier('checkbox')
+          display: none
+
+          &:checked + label:after
+            content: ''
+            display: block
+            position: absolute
+            top: 4px
+            left: 5px
+            width: 4px
+            height: 9px
+            border: solid $white-color
+            border-width: 0 2px 2px 0
+            transform: rotate(45deg)
+
+          &:checked + label:before
+            background-color: $text-green
+
+        +modifier('label')
+          position: relative
+          cursor: pointer
+
+          &::before
+            content: ''
+            -webkit-appearance: none
+            position: relative
+            display: inline-block
+            padding: 7px
+            border: 1px solid $light-grey
+            border-radius: 4px
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05)
+            vertical-align: middle
+            background-color: transparent
+
+          &::after
+            content: ''
+            display: block
+            position: absolute
+            top: 9px
+            left: 3px
+            width: 8px
+            border: solid $light-grey
+            border-width: 0 2px 2px 0
+
+    +modifier('tbody')
+
+      +modifier('tr')
+        height: 60px
+        max-height: 60px
+        border-top: 1px solid #E1E7E9
+
+        &.highlighted
+          background-color: #E6F7F4
+
+        &:hover
+          background-color: lighten(#E6F7F4, 3%)
+
+        +modifier('td')
+          max-height: 60px
+          height: 60px
+          padding: 10px 5px
+          font-size: .875em
+          text-align: center
+
+          &.light-text
+            color: $light-grey
+
+          &.strong-text
+            font-weight: 700
+            color: $link-color-active
+
+          &:nth-child(3)
+            padding-left: 15px
+            text-align: left
+
+          +modifier('checkbox')
+            display: none
+
+            &:checked + label:after
+              content: ''
+              display: block
+              position: absolute
+              top: 4px
+              left: 5px
+              width: 4px
+              height: 9px
+              border: solid $white-color
+              border-width: 0 2px 2px 0
+              transform: rotate(45deg)
+
+            &:checked + label:before
+              background-color: $text-green
+
+          +modifier('label')
+            position: relative
+            cursor: pointer
+
+            &::before
+              content: ''
+              -webkit-appearance: none
+              position: relative
+              display: inline-block
+              padding: 7px
+              border: 1px solid $light-grey
+              border-radius: 4px
+              box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05)
+              vertical-align: middle
+              background-color: transparent
+
+          +modifier('tagname')
+              display: inline-block
+              height: 18px
+              padding: 3px
+              border-radius: 4px
+              font-size: .6875em
+              font-weight: 700
+              text-align: center
+              line-height: 1.2
+              color: $white-color
+
+          +modifier('delete')
+            display: block
+            margin: 0 auto
+            font-weight: 700
+            border: none
+            cursor: pointer
+            color: $btn-red
+            background-color: unset
+
+            &:disabled
+              cursor: not-allowed
+
+            &:focus
+              color: darken($btn-red, 15%)
+
+            &:hover
+              color: lighten($btn-red, 5%)
+
+    +modifier('dropdown')
+      display: flex
+      justify-content: space-evenly
+      align-items: center
+      position: relative
+      width: 50px
+      height: 20px
+
+      +modifier('circle')
+        display: inline-block
+        width: 17px
+        height: 17px
+        border-radius: 50%
+        background-color: #eee
+
+      +modifier('icon')
+        font-size: .9em
+        cursor: pointer
+        color: $light-grey
+        transition: all 500ms ease-in-out
+
+      +modifier('content')
+        display: none
+        flex-wrap: wrap
+        justify-content: space-evenly
+        align-items: center
+        position: absolute
+        top: 22px
+        left: 5px
+        width: 155px
+        height: 95px
+        padding: 5px
+        border: 1px solid #CFCFCF
+        border-radius: 4px
+        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3)
+        z-index: 1
+        background-color: $white-color
+
+        &.open
+          display: flex
+
+        +modifier('text')
+          width: 100%
+          margin: 0 0 5px 0
+          font-size: .875em
+          font-weight: 700
+          color: $link-color-active
+
+        +modifier('colorwrapper')
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 25px
+          height: 25px
+
+          +modifier('circlebtn')
+            position: relative
+            width: 17px
+            height: 17px
+            border-radius: 50%
+            border-style: none
+            cursor: pointer
+            color: #eee
+            background-color: #eee
+            transition: box-shadow 200ms ease-in-out
+
+            &:focus
+              outline: none
+
+            &:hover
+              box-shadow: 0px 0px 3px 2px
+
+            &.selected
+              box-shadow: 0px 0px 3px 2px
+
+              &:after
+                content: ''
+                display: block
+                position: absolute
+                top: 2px
+                left: 5px
+                width: 4px
+                height: 9px
+                border: solid $white-color
+                border-width: 0 2px 2px 0
+                transform: rotate(45deg)
+
+  +modifier('pagination')
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    height: 50px
+    border-top: 1px solid #E1E7E9
+
+    +modifier('dropdown')
+      display: flex
+      align-items: center
+      width: 30%
+      height: 40px
+      padding-left: 20px
+
+      +modifier('box')
+        position: relative
+        font-size: .75em
+        text-transform: uppercase
+        color: $link-color-active
+
+        +modifier('text')
+
+          +modifier('active')
+            font-size: 1.125em
+            color: $text-green
+
+            +modifier('icon')
+              cursor: pointer
+              transition: color 400ms ease-in-out
+
+              &:hover
+                color: lighten($text-green, 15%)
+
+        +modifier('content')
+          display: none
+          position: absolute
+          bottom: 35px
+          width: 120px
+          height: auto
+          border: 1px solid #E1E7E9
+          border-radius: 4px
+          box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3)
+          font-size: 1.4em
+          font-weight: 600
+          background-color: #FFFFFF
+
+          &.open
+            display: block
+
+          +modifier('list')
+            padding: 0
+            list-style-type: none
+
+            +modifier('item')
+              padding: 3px
+              cursor: pointer
+              transition: background-color 400ms ease-in-out
+
+              &:hover
+                background-color: darken($bg-aside, 5%)
+
+              &:nth-child(odd)
+                background-color: $bg-aside
+
+                &:hover
+                  background-color: darken($bg-aside, 5%)
+
+    +modifier('controls')
+      display: inline-flex
+      justify-content: flex-end
+      align-items: center
+      width: 30%
+      height: 40px
+      padding: 0 10px
+      text-transform: uppercase
+
+      +modifier('arrow')
+        margin: 0 5px
+        font-size: 1.125em
+        border: none
+        cursor: pointer
+        color: $light-grey
+        background-color: transparent
+
+        &:disabled
+          cursor: not-allowed
+          color: #CFCFCF
+
+        &:focus
+          outline: none
+
+      +modifier('text')
+        margin: 0 20px
+        font-size: .75em
+        color: $link-color-active
+
+        +modifier('active')
+          color: $text-green

@@ -1,0 +1,86 @@
+@mixin icon
+  display: inline-block
+  width: 15px
+  height: 15px
+  margin-right: 10px
+  font-family: "Font Awesome 5 Free"
+  font-weight: 900
+
+.grid__aside--container--nav
+  display: flex
+  flex-direction: column
+  width: 100%
+  height: 85%
+  font-size: .875em
+  color: $link-color
+
+  +modifier('link')
+    display: flex
+    align-items: center
+    width: 100%
+    height: 50px
+    font-weight: 700
+    text-decoration: none
+    color: $link-color
+
+    //First link and bars icon
+    &:nth-child(1)
+      &::before
+        @include icon
+        content: '\f0c9'
+
+    //Second link and loop icon
+    &:nth-child(2)
+      color: $text-green
+      &::before
+        @include icon
+        content: '\f002'
+
+    //Third link and flopy disk icon
+    &:nth-child(3)
+      &::before
+        @include icon
+        content: '\f0c7'
+
+    //Fourthlink and clipboard icon
+    &:nth-child(4)
+      &::before
+        @include icon
+        content: '\f328'
+
+    //Fifth link and loop icon
+    &:nth-child(5)
+      &::before
+        @include icon
+        content: '\f002'
+
+    //Sixst link and key icon
+    &:nth-child(6)
+      &::before
+        @include icon
+        content: '\f084'
+
+    //Seventh link and tag icon
+    &:nth-child(7)
+      &::before
+        @include icon
+        content: '\f02b'
+
+    //Eight link and cog icon
+    &:nth-child(8)
+      &::before
+        @include icon
+        content: '\f013'
+
+    //Eight link and cheveron down icon
+    &:nth-child(8)
+      &::after
+        @include icon
+        margin-left: 5px
+        content: '\f078'
+
+    &:hover
+      color: lighten($link-color-active, 10%)
+
+    &.active, &.router-link-active
+      color: $link-color-active
