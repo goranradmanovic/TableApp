@@ -35,6 +35,9 @@
             i.grid__content--container--table--thead--tr--th--sorticon(v-if='item.sortable' @click='sortedByDate()' :class='{desc: currentSortDir == "desc", asc: currentSortDir == "asc"}')
 
       tbody.grid__content--container--table--tbody
+        tr.grid__content--container--table--tbody--tr(v-if='isDataEmpty')
+          td(class='grid__content--container--table--tbody--tr--td--nodata' colspan='10') There is no data
+
         tr.grid__content--container--table--tbody--tr(v-for='(itemRow, index) in paginate' :key='itemRow.id' :class='{highlighted: selectedOne}' :id='itemRow.id')
           td.grid__content--container--table--tbody--tr--td
             input(type='checkbox' :id='"checkbox-" + index' :value='itemRow.id' @click='select($event)' v-model='selected' class='grid__content--container--table--tbody--tr--td--checkbox')
@@ -691,6 +694,15 @@
 
         //Slice the items array
         return this.items.slice(index, index + this.itemsPerPage);
+      },
+
+      isDataEmpty() {
+
+        if (this.items.length == 0) {
+          this.resultCount = 1;
+          this.allSelected = false;
+          return true;
+        }
       },
 
       //Function for getting table header fields from vuex store
