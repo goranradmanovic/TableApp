@@ -527,8 +527,10 @@
 
       //Format user name
       formatName(name) {
-        let splitedName = name.split(' ');
-        return `${splitedName[0]} ${splitedName[1].charAt(0)}`;
+        if (name != 'Not Set') {
+          let splitedName = name.split(' ');
+          return `${splitedName[0]} ${splitedName[1].charAt(0)}`;
+        }
       },
 
       //Sorting data by date/time
