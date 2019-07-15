@@ -18,7 +18,7 @@
           button.grid__content--container--modal--box--footer--btn.delete(@click='deleteMultipleTableRows(selected), toggleModal()') Delete
 
     .grid__content--container--delete
-      button.grid__content--container--delete--btn(@click='toggleModal()' :disabled='!deleteBtnDisabled') Delete
+      button.grid__content--container--delete--btn(@click='toggleModal()' :disabled='!deleteBtnDisabled || items.length == 0') Delete
 
     //- Page Table
     table.grid__content--container--table#grid-template
@@ -28,7 +28,7 @@
       thead.grid__content--container--table--thead
         tr.grid__content--container--table--thead--tr
           th.grid__content--container--table--thead--tr--th
-            input(type='checkbox' @click='selectAllRows' v-model='allSelected' id='allSelectedRows' class='grid__content--container--table--thead--tr--checkbox')
+            input(type='checkbox' @click='selectAllRows' v-model='allSelected' id='allSelectedRows' class='grid__content--container--table--thead--tr--checkbox' :disabled='items.length == 0')
             label(for='allSelectedRows' class='grid__content--container--table--thead--tr--label')
 
           th(v-for='item in tableHeaders' :key='item.id' class='grid__content--container--table--thead--tr--th') {{ item.label }}
