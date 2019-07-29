@@ -27,7 +27,7 @@
       toggleAsideMenu() {
         this.$refs.asideMenu.classList.toggle('open');
         this.$refs.hamburgerMenuBtn.classList.toggle('fa-times');
-      }
+      },
     }
   }
 </script>
